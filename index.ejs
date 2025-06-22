@@ -1,0 +1,66 @@
+<% layout("layouts/boilerplate") %>
+
+<!-- Flash Message -->
+<!-- <% if(success) { %>
+  <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+    <%= success %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %> -->
+
+<!-- Category Filter Bar -->
+<div class="container-fluid border-bottom bg-white sticky-top py-2 shadow-sm" style="z-index: 999;">
+  <div class="d-flex align-items-center justify-content-between overflow-auto px-3">
+
+    <div class="d-flex gap-4 flex-nowrap">
+      <% const categories = [
+        { icon: 'fa-fire', label: 'Trending' },
+        { icon: 'fa-bed', label: 'Rooms' },
+        { icon: 'fa-city', label: 'Iconic Cities' },
+        { icon: 'fa-mountain', label: 'Mountains' },
+        { icon: 'fa-chess-rook', label: 'Castles' },
+        { icon: 'fa-person-swimming', label: 'Pools' },
+        { icon: 'fa-campground', label: 'Camping' },
+        { icon: 'fa-tractor', label: 'Farms' },
+        { icon: 'fa-snowflake', label: 'Arctic' },
+        { icon: 'fa-igloo', label: 'Domes' },
+        { icon: 'fa-ship', label: 'Boats' }
+      ]; %>
+
+      <% categories.forEach(cat => { %>
+        <div class="text-center text-muted small">
+          <i class="fa-solid <%= cat.icon %> d-block mb-1"></i>
+          <div><%= cat.label %></div>
+        </div>
+      <% }); %>
+    </div>
+
+    <div class="ms-3">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="toggleTaxDisplay">
+        <label class="form-check-label small" for="toggleTaxDisplay">Show total after tax</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Listings Section -->
+<div class="container mt-4">
+  <h3 class="mb-4">All Listings</h3>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% for (let list of allListing) { %>
+      <div class="col">
+        <a href="/listing/<%= list._id %>" class="text-decoration-none text-dark">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="<%= list.image.url %>" class="card-img-top" alt="<%= list.title %>" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title mb-1"><%= list.title %></h5>
+              <p class="card-text text-muted mb-0">₹<%= list.price %> / night</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>

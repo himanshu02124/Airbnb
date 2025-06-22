@@ -1,0 +1,47 @@
+<% layout("layouts/boilerplate") %>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2 class="mb-4">New Listing Form</h2>
+    <form method="POST" action="/listing" class="p-4 border rounded bg-white shadow-sm needs-validation" novalidate enctype="multipart/form-data">
+      
+      <div class="mb-3">
+        <input type="text" name="listing[title]" class="form-control" placeholder="Enter title" required>
+        <div class="invalid-feedback">
+          Title is required.
+        </div>
+      </div>
+
+      <!-- <div class="mb-3">
+        <input type="text" name="listing[image]" class="form-control" placeholder="URL/link" required>
+        <div class="invalid-feedback">
+          Image URL is required.
+        </div>
+      </div> -->
+
+      
+      <div class="mb-3">
+        <input type="file" name="listing[image]" class="form-control" required >
+        <div class="invalid-feedback">
+          Upload Image 
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input type="number" name="listing[price]" class="form-control" placeholder="Enter price" required>
+        <div class="invalid-feedback">
+          Price is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input type="text" name="listing[location]" class="form-control" placeholder="Enter location" required>
+        <div class="invalid-feedback">
+          Location is required.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+
+</body>

@@ -1,0 +1,118 @@
+<% layout("layouts/boilerplate") %>
+
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm mb-4">
+          <img src="<%= listing.image.url %>" class="card-img-top img-fluid" alt="Listing Image" style="max-height: 400px; object-fit: cover;">
+          
+          <div class="card-body">
+            <h3 class="card-title mb-3"><%= listing.title %></h3>
+            
+            <div class="mb-3">
+              <span class="fw-bold">Owner</span>
+              <span class="badge bg-success ms-2"><%= listing.owner.username %></span>
+            </div>
+
+            <div class="mb-3">
+              <span class="fw-bold">Price:</span>
+              <span class="badge bg-success ms-2">₹<%= listing.price %></span>
+            </div>
+            
+            <div class="mb-4">
+              <span class="fw-bold">Location:</span>
+              <span class="text-muted ms-2"><%= listing.location %></span>
+            </div>
+
+            <!-- Google Map
+            <div class="mb-4">
+              <span class="fw-bold">Map:</span>
+              <div id="map" style="height: 300px; width: 100%; border-radius: 10px;"></div>
+            </div> -->
+
+            <% if (currUser && listing.owner._id.equals(currUser._id)) { %>
+              <div class="d-flex justify-content-between border-top pt-3">
+                <a href="/listing/<%= listing._id %>/edit" class="btn btn-primary px-4">Edit Listing</a>
+                <form method="POST" action="/listing/<%= listing._id %>?_method=DELETE" class="mb-0">
+                  <button type="submit" class="btn btn-outline-danger px-3" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="text-center mb-4">
+          <a href="/listing" class="text-decoration-none">← Back to all listings</a>
+        </div>
+
+        <!-- Review Form -->
+        <% if (currUser && listing.owner._id.equals(currUser._id)) { %>
+          <form action="/listing/<%= listing._id %>/reviews" method="POST" class="mb-3">
+            <div class="mb-2">
+              <textarea name="review[comment]" class="form-control" rows="2" placeholder="Write a comment" required></textarea>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <select name="review[rating]" class="form-select w-auto" required>
+                <% for (let i = 1; i <= 5; i++) { %>
+                  <option value="<%= i %>"><%= i %> ★</option>
+                <% } %>
+              </select>
+              <button type="submit" class="btn btn-sm btn-primary">Post</button>
+            </div>
+          </form>
+        <% } %>
+
+        <hr>
+
+        <h5 class="mb-3">Reviews</h5>
+
+        <% if (listing.reviews && listing.reviews.length > 0) { %>
+          <% listing.reviews.forEach(review => { %>
+            <div class="border rounded p-2 mb-2">
+              <div class="d-flex justify-content-between">
+                <span class="text-warning">★ <%= review.rating %></span>
+              </div>
+              <p class="mb-0"><%= review.comment %></p>
+
+              <form method="POST" action="/listing/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                <button type="submit" class="btn btn-sm btn-outline-danger mt-1">Delete</button>
+              </form>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="text-muted">No reviews yet.</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Maps Script
+  <script>
+    function initMap() {
+      const geocoder = new google.maps.Geocoder();
+      const address = "<%= listing.location %>";
+
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 13,
+            center: results[0].geometry.location,
+          });
+
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+          });
+        } else {
+          console.error("Geocoding failed: " + status);
+          document.getElementById("map").innerHTML = "<div class='text-muted'>Unable to load map</div>";
+        }
+      });
+    }
+  </script>
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuDG5O6CDkCXvHfWX5OqDelPUuml1Wins&callback=initMap">
+  </script> -->
+</body>

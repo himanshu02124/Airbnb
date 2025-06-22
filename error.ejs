@@ -1,0 +1,9 @@
+<%('layouts/boilerplate') %>
+
+<div class="container mt-5">
+  <div class="alert alert-danger text-center">
+    <h1 class="mb-3">Error <%= err.statusCode || 500 %></h1>
+    <p><%= err.message || "Something went wrong!" %></p>
+    <a href="/listing" class="btn btn-primary mt-3">Go back to Listings</a>
+  </div>
+</div>

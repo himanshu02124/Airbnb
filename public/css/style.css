@@ -1,0 +1,84 @@
+.nav-link{
+    font-weight: 2rem;
+    color: black !important;
+}
+.navbar{
+    height: 5rem;
+    
+}
+/*footer*/
+footer {
+  background-color: #f8f9fa; /* Matches Bootstrap's bg-body-tertiary */
+  border-top: 1px solid #dee2e6; /* Matches Bootstrap's border */
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.f-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.f-info-social i {
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  color: #6c757d;
+  transition: color 0.3s;
+}
+
+.f-info-social i:hover {
+  color: #0d6efd; /* Bootstrap primary color on hover */
+}
+
+.f-info-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #6c757d;
+  transition: color 0.3s;
+}
+
+.f-info-links a:hover {
+  color: #0d6efd;
+}
+
+/*card*/
+.card {
+  margin: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}

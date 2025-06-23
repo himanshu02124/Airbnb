@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand text-danger fw-bold d-flex align-items-center" href="/listing">
+      <i class="fa-solid fa-compass me-2"></i>Explore
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+      <!-- Center Search -->
+       <form class="d-flex justify-content-center align-items-center w-100 px-3 py-2" role="search" action="/search" method="GET" style="max-width: 600px; margin: auto;">
+  <div class="input-group">
+    <input 
+      type="search" 
+      name="q" 
+      class="form-control rounded-start-pill ps-4" 
+      placeholder="Search destinations" 
+      aria-label="Search" 
+      style="border-right: none;"
+    >
+    <button 
+      class="btn btn-danger rounded-end-pill px-4" 
+      type="submit"
+    >
+      <i class="fa-solid fa-magnifying-glass me-1"></i>Search
+    </button>
+  </div>
+</form>
+
+      <!-- Right Side Links -->
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/listing/new">Create listing</a>
+        </li>
+
+        <% if (!currUser) { %>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/signup">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/login">Log in</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/logout">Log out</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

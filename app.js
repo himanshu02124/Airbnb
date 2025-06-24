@@ -90,7 +90,7 @@ const {listingSchema,reviewSchema}=require("./listingSchema.js")
 
 // middleware/validateListing.js
 
-const { validateListing, validateReview } = require('./validatelisting');
+const { validateListing, validateReview } = require('./validateListing');
 
 
 // Routes

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router({ mergeParams: true }); // allow access to :id
 const Listing = require("../models/listing");
 const Review = require("../models/review");
-const { validateReview } = require("../validatelisting");
+const { validateReview } = require("../validateListing");
 const ExpressError = require("../utils/expresserror");
 
 const reviewController = require("../controller/review")

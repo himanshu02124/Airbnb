@@ -93,6 +93,12 @@ const {listingSchema,reviewSchema}=require("./listingSchema.js")
 const { validateListing, validateReview } = require('./validateListing');
 
 
+app.get("/", (req, res) => {
+  res.redirect("/listing"); // or render a homepage if you have one
+});
+
+
+
 // Routes
 
 // //Index route
